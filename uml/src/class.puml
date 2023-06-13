@@ -1,0 +1,40 @@
+@startuml 8PuzzleClassDiagram
+
+class Main {
+    + main()
+}
+
+class Puzzle {
+    + actions()
+    + result()
+    + is_goal()
+    + cost()
+}
+
+class Solver {
+    + solve()
+}
+
+class Heuristic {
+    + manhattan_distance()
+}
+
+class PuzzleInput {
+    + validate_input()
+    + convert_input()
+}
+
+class PuzzleOutput {
+    + display_solution()
+    + display_time()
+    + display_move_count()
+}
+
+Main --> Puzzle : Uses
+Main --> Solver : Uses
+Main --> PuzzleInput : Uses
+Main --> PuzzleOutput : Uses
+Solver --> Puzzle : Uses
+Solver --> Heuristic : Uses
+
+@enduml

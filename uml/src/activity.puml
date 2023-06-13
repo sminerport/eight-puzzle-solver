@@ -1,0 +1,19 @@
+@startuml 8PuzzleActivityDiagram
+
+start
+:main;
+
+if (Get input from user) then (valid)
+    :Create Puzzle object;
+    if (Solve Puzzle) then (solvable)
+        :Display solution;
+    else (unsolvable)
+        :Display error message;
+    endif
+else (invalid)
+    :Display error message;
+endif
+
+stop
+
+@enduml

@@ -1,0 +1,31 @@
+@startuml 8PuzzleSequenceDiagram
+
+participant "main : Main" as M
+participant "input : PuzzleInput" as I
+participant "puzzle : Puzzle" as P
+participant "solver : Solver" as S
+participant "output : PuzzleOutput" as O
+
+activate M
+M -> I : get_input()
+activate I
+I --> M : input
+deactivate I
+
+M -> P : create_puzzle(input)
+activate P
+P --> M : puzzle
+deactivate P
+
+M -> S : solve(puzzle)
+activate S
+S --> M : solution
+deactivate S
+
+M -> O : display_solution(solution)
+activate O
+M <-- O : solution display
+deactivate O
+deactivate M
+
+@enduml
