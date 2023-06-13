@@ -16,7 +16,7 @@ These instructions will get you a copy of the project up and running on your loc
 - simpleai library
 
 ### Installing
-- Clone the repository: `git clone https://github.com/<username>/8-Puzzle-Solver.git`
+- Clone the repository: `git clone https://github.com/sminerport/eight-puzzle-solver.git`
 - Install the requirements: `pip install -r requirements.txt`
 
 ## Usage
