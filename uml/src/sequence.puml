@@ -1,31 +1,36 @@
-@startuml 8PuzzleSequenceDiagram
+@startuml SequenceDiagram
 
-participant "main : Main" as M
-participant "input : PuzzleInput" as I
-participant "puzzle : Puzzle" as P
-participant "solver : Solver" as S
-participant "output : PuzzleOutput" as O
+skinparam sequence {
+    ArrowColor DarkSlateGray
+    ActorBorderColor DarkSlateGray
+    LifeLineBorderColor DarkSlateGray
+    LifeLineBackgroundColor PaleGreen
+    ParticipantBorderColor DarkSlateGray
+    ParticipantBackgroundColor PaleGreen
+    ParticipantFontName Roboto
+    ActorBackgroundColor PaleGreen
+    ActorFontName Roboto
+    TitleFontSize 24
+    TitleFontColor DarkOliveGreen
+}
 
-activate M
-M -> I : get_input()
-activate I
-I --> M : input
-deactivate I
+title 8-Puzzle Solver Sequence Diagram
 
-M -> P : create_puzzle(input)
-activate P
-P --> M : puzzle
-deactivate P
+actor User
 
-M -> S : solve(puzzle)
-activate S
-S --> M : solution
-deactivate S
-
-M -> O : display_solution(solution)
-activate O
-M <-- O : solution display
-deactivate O
-deactivate M
+User -> GameController: Start Program
+activate GameController
+GameController -> User: Display Instructions
+User -> GameController: Input Puzzle
+GameController -> PuzzleSolver: isSolvable(digit_list)
+activate PuzzleSolver
+PuzzleSolver --> GameController: Solvable
+deactivate PuzzleSolver
+GameController -> EightPuzzleProblem: Solve Puzzle (astar)
+activate EightPuzzleProblem
+EightPuzzleProblem --> GameController: Solution
+deactivate EightPuzzleProblem
+GameController -> User: Display Solution
+deactivate GameController
 
 @enduml

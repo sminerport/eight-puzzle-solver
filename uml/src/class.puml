@@ -1,40 +1,48 @@
-@startuml 8PuzzleClassDiagram
+@startuml ClassDiagram
 
-class Main {
-    + main()
+title "Class Diagram of the AI-Driven Eight Puzzle Solver"
+
+skinparam class {
+    BackgroundColor PaleGreen
+    ArrowColor SeaGreen
+    BorderColor SpringGreen
 }
 
-class Puzzle {
-    + actions()
-    + result()
-    + is_goal()
-    + cost()
+class GameController {
+  -user_input: String
+  -digit_list: List
+  -result: Result
+  -start_time: Time
+  +run(): Void
+  +solve_puzzle(): Void
+  +print_instructions(): Void
+  +process_input(user_input): List
+  +print_solution(solution, elapsed_time, format_in_minutes): Void
 }
 
-class Solver {
-    + solve()
+class EightPuzzleProblem {
+  -GOAL: String
+  -goal_positions: Dictionary
+  +actions(state): List
+  +result(state, action): String
+  +is_goal(state): Boolean
+  +cost(state1, action, state2): Int
+  +heuristic(state): Int
 }
 
-class Heuristic {
-    + manhattan_distance()
+class PuzzleRepresentation {
+  +list_to_string(list_): String
+  +string_to_list(string_): List
+  +find_location(rows, element_to_find): Tuple
 }
 
-class PuzzleInput {
-    + validate_input()
-    + convert_input()
+class PuzzleSolver {
+  +getInvCount(tiles): Int
+  +isSolvable(puzzle): Boolean
 }
 
-class PuzzleOutput {
-    + display_solution()
-    + display_time()
-    + display_move_count()
-}
-
-Main --> Puzzle : Uses
-Main --> Solver : Uses
-Main --> PuzzleInput : Uses
-Main --> PuzzleOutput : Uses
-Solver --> Puzzle : Uses
-Solver --> Heuristic : Uses
+GameController --> EightPuzzleProblem: uses
+GameController --> PuzzleSolver: uses
+EightPuzzleProblem --> PuzzleRepresentation: uses
 
 @enduml

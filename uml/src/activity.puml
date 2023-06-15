@@ -1,19 +1,41 @@
-@startuml 8PuzzleActivityDiagram
+@startuml ActivityDiagram
+
+skinparam activity {
+    BackgroundColor PaleGreen
+    BorderColor DarkSlateGray
+    StartColor DarkSlateGray
+    EndColor DarkSlateGray
+    ArrowColor DarkSlateGray
+}
+
+title 8-Puzzle Solver Activity Diagram
 
 start
-:main;
 
-if (Get input from user) then (valid)
-    :Create Puzzle object;
-    if (Solve Puzzle) then (solvable)
-        :Display solution;
-    else (unsolvable)
-        :Display error message;
+partition GameController {
+    :Print Instructions;
+    :Get User Input;
+    :Process User Input;
+}
+
+partition PuzzleSolver {
+    if (Is input solvable?) then (yes)
+        partition EightPuzzleProblem {
+            :Solve Puzzle;
+        }
+        partition GameController {
+            :Print Solution;
+        }
+    else (no)
+        partition GameController {
+            :Print Not Solvable;
+        }
     endif
-else (invalid)
-    :Display error message;
-endif
+}
 
+partition GameController {
+    :Handle Exceptions;
+}
 stop
 
 @enduml
