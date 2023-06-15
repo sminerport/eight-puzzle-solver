@@ -14,20 +14,26 @@ The 8-puzzle game is a sliding puzzle that consists of a frame of numbered squar
 
 To get a better understanding of the structure and the flow of the program, refer to the class diagram, activity diagram, and sequence diagram provided below.
 
-### Class Diagram
-![Class Diagram](uml/output/class/ClassDiagram.png)
+<h3 align="center">Class Diagram</h3>
+<p align="center">
+  <img src="uml/output/class/ClassDiagram.png" alt="Class Diagram">
+</p>
 
-### Activity Diagram
-![Activity Diagram](uml/output/activity/ActivityDiagram.png)
+<h3 align="center">Activity Diagram</h3>
+<p align="center">
+  <img src="uml/output/activity/ActivityDiagram.png" alt="Activity Diagram">
+</p>
 
-### Sequence Diagram
-![Sequence Diagram](uml/output/sequence/SequenceDiagram.png)
+<h3 align="center">Sequence Diagram</h3>
+<p align="center">
+  <img src="uml/output/sequence/SequenceDiagram.png" alt="Sequence Diagram">
+</p>
 
-### Application Screenshot
+<h3 align="center">Application Screenshot</h3>
+<p align="center">
+  <img src="images/eight-puzzle.png" alt="Application Screenshot">
+</p>
 
-Below is a screenshot of the application in action. The image shows the initial state of the puzzle, the process of solving it using the A* algorithm, and the final solution.
-
-![Application Screenshot](images/eight-puzzle.png)
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
@@ -46,13 +52,20 @@ These instructions will get you a copy of the project up and running on your loc
 
 Here's an example of how to enter the initial state of the puzzle:
 
-![user-input](images/user-input.png)
+<p align="center">
+  <img src="images/user-input.png" alt="User Input">
+</p>
+
 
 And here's what the output might look like:
 
-<img src="images/output.png" width="500"/>
+<p align="center">
+    <img src="images/output.png" width="500"/>
+</p>
 
-<img src="images/output-solved.png" width="500"/>
+<p align="center">
+    <img src="images/output-solved.png" width="500"/>
+</p>
 
 ## Contributing
 
