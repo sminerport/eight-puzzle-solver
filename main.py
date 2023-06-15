@@ -1,5 +1,6 @@
 import re
 import time
+from colorama import Fore, Style
 from src.eight_puzzle_problem import EightPuzzleProblem
 from src.puzzle_solver import PuzzleSolver
 from simpleai.search.traditional import astar
@@ -103,16 +104,37 @@ def process_input(user_input):
         digitList.append(int(c))
     return digitList
 
+
 def print_solution(solution, elapsed_time, format_in_minutes=False):
     step_number = 0
     for action, state in solution.path():
         print("--------------------------------------------------------------------------------")
         if step_number == 0:
             print("Initial State:\n")
-            print(state)
+            print(state.replace('*', f"{Fore.GREEN}*{Style.RESET_ALL}"))
         else:
-            print(f"Step {step_number}: Move tile {action}\n")
-            print(state)
+            print(f"Step {step_number}: Move tile {Fore.RED}{action}{Style.RESET_ALL}\n")
+
+            # Convert the state to a 2D array
+            state_2d = [list(row) for row in state.split("\n")]
+
+            # Process each row
+            for row in state_2d:
+                str_row = "".join(row)
+                if str(action) in str_row and '*' in str_row:
+                    row[str_row.index(str(action))] = f"{Fore.RED}{action}{Style.RESET_ALL}"
+
+            # Process each column
+            for j in range(len(state_2d[0])):
+                column = [row[j] for row in state_2d]
+                str_column = "".join(column)
+                if str(action) in str_column and '*' in str_column:
+                    i = str_column.index(str(action))
+                    state_2d[i][j] = f"{Fore.RED}{action}{Style.RESET_ALL}"
+
+            # Convert the state back to a string and replace '*' with a green version of itself
+            state = "\n".join("".join(row) for row in state_2d)
+            print(state.replace('*', f"{Fore.GREEN}*{Style.RESET_ALL}"))
         step_number += 1
         print("--------------------------------------------------------------------------------")
 
@@ -122,6 +144,9 @@ def print_solution(solution, elapsed_time, format_in_minutes=False):
         print(f"\nSolution found in {elapsed_time:0.2f} seconds!")
 
     print(f"Puzzle solved in {step_number - 1} steps!\n")
+
+
+
 
 
 # Run the main function
